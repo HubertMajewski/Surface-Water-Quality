@@ -51,6 +51,8 @@ jobs:
           CI: ""
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
+        with: 
+          path: "./NodeJS/public"
 
   # Deployment job
   deploy:
