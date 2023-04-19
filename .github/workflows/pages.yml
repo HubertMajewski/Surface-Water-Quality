@@ -34,7 +34,7 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
     
     steps:
       - name: Checkout
@@ -49,10 +49,11 @@ jobs:
       - run: npm run build 
         env:
           CI: ""
+      - run: cp -r ./public/* ./build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with: 
-          path: "./NodeJS/public"
+          path: "./NodeJS/build"
 
   # Deployment job
   deploy:
