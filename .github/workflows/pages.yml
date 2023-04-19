@@ -49,7 +49,7 @@ jobs:
       - run: npm run build 
         env:
           CI: ""
-      - run: cp ./public/* ./build
+      - run: cp -r ./public/* ./build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with: 
