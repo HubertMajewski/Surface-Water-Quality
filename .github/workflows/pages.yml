@@ -49,8 +49,8 @@ jobs:
       - run: npm run build 
         env:
           CI: ""
-#       - name: Upload artifact
-#         uses: actions/upload-pages-artifact@v1
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
 
   # Deployment job
   deploy:
