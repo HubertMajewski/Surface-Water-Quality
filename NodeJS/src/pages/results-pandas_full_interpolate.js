@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Grid } from '@mui/material';
 import Card from '../components/Card';
-import { getJupyterNotebookTitleBodyPairs, getPandasProfileReportTitleBodyPairs } from '../util/parse_jupyter_html';
+import { getPandasProfileReportTitleBodyPairs } from '../util/parse_jupyter_html';
 import { CircularProgress } from '@mui/material';
 
 export default () => {
@@ -10,8 +10,7 @@ export default () => {
 
     //Set the data async
     useEffect(() =>
-        getJupyterNotebookTitleBodyPairs("Surfacewater_XGB.html")
-        // getPandasProfileReportTitleBodyPairs("Full_table_interpolate.html")
+            getPandasProfileReportTitleBodyPairs("Full_table_interpolate.html")
             .then(res => {
                 setCards(res)
                 setLoading(false);
@@ -31,13 +30,9 @@ export default () => {
                     :
                     // Design your page from here
                     <>
-                        {cards.map(p => (
-                            <Grid item style={{ width: "100%" }}>
-                                <Card align="left" heading={p.title} >
-                                    {p.body}
-                                </Card>
-                            </Grid>
-                        ))}
+                        <Grid item width="100%" height="87vh">
+                            {cards[0].title}
+                        </Grid>
                     </>
             }
         </Grid>
