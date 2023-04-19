@@ -20,10 +20,10 @@ export const Card = ({ heading, children }) => {
       </Grid>
     </AppBar>
 
-    <Grid container>
+    <Grid container style={{paddingTop: 1}}>
       {children.map(
         child => (child
-          ? <Grid item sx={{ width: "100%", m: 1, overflowX: "auto" }}>
+          ? <Grid item sx={{ width: "100%", ml: 1, overflowX: "auto" }}>
             {child}
           </Grid>
           : null

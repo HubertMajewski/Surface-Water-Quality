@@ -8,31 +8,27 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
-import DnsRoundedIcon from '@mui/icons-material/DnsRounded';
-import PermMediaOutlinedIcon from '@mui/icons-material/PhotoSizeSelectActual';
-import TimerIcon from '@mui/icons-material/Timer';
-import SettingsIcon from '@mui/icons-material/Settings';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import PermMediaOutlinedIcon from '@mui/icons-material/PermMediaOutlined'
 import { usePageContext } from '../PageContext';
 
 const categories = [
   {
-    id: 'Data',
+    id: 'Introduction',
     children: [
-      { id: 'Database', icon: <DnsRoundedIcon /> },
-      { id: 'Storage', icon: <PermMediaOutlinedIcon /> },
-    ],
-  },
-  {
-    id: 'Model',
-    children: [
-      { id: 'Performance', icon: <TimerIcon /> },
+      { id: 'Surface Water Quality', icon: <PermMediaOutlinedIcon /> },
+      // { id: 'Engineering', icon: <DnsRoundedIcon /> },
     ],
   },
   {
     id: 'Results',
     children: [
-      { id: 'Tests', icon: <SettingsIcon /> },
-      { id: 'Error', icon: <TimerIcon /> },
+      { id: 'Surface Water Notebook', icon: <MenuBookIcon /> },
+      { id: 'Interpolation Notebook', icon: <MenuBookIcon /> },
+      { id: 'Preimpute Profile Report', icon: <LibraryBooksIcon /> },
+      { id: 'Interpolate Profile Report', icon: <LibraryBooksIcon /> },
+      { id: 'Interpolate Logs Profile Report', icon: <LibraryBooksIcon /> }
     ],
   },
 ];
@@ -57,13 +53,13 @@ export default function Navigator(props) {
   const { ...other } = props;
 
   const onChildClick = (id, childId) => {
-    dispatch({ type: "subheading", value: id + " - " + childId})
+    dispatch({ type: "subheading", value: id + " - " + childId })
     dispatch({ type: "selectedNavigation", value: id });
     dispatch({ type: "selectedSubnavigation", value: childId });
   }
 
   useEffect(() => {
-    dispatch({ type: "subheading", value: categories[0].id + " - " + categories[0].children[0].id})
+    dispatch({ type: "subheading", value: categories[0].id + " - " + categories[0].children[0].id })
     dispatch({ type: "selectedNavigation", value: categories[0].id });
     dispatch({ type: "selectedSubnavigation", value: categories[0].children[0].id });
   }, [])

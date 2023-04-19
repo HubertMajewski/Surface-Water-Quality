@@ -35,8 +35,8 @@ const refreshScript = script => {
 	script.parentNode.replaceChild(newScript, script);
 };
 
-const WrapContent = ({ content, additionalScripts = [], styles = []}) => {
-    const [dispatch] = usePageContext()
+const WrapContent = ({ content, additionalScripts = [], styles = [] }) => {
+	const [dispatch] = usePageContext()
 	const ref = React.useRef(null)
 
 	//DangerouslySetInnerHTML as base for forcePlots with a script in jupyter notebook
@@ -81,32 +81,14 @@ export const getJupyterNotebookTitleBodyPairs = fileName =>
 	});
 
 export const getPandasProfileReportTitleBodyPairs = fileName =>
-	axios.get("./" + "pandas_html/" + fileName).then(response => {
+	Promise.resolve([{
+		title: <iframe src={"./" + "pandas_html/" + fileName} width={"100%"} height={"100%"}></iframe>
+	}]
+	);
 
-		const doc = new DOMParser().parseFromString(response.data, "text/html");
 
-		var styles = [...doc.getElementsByTagName('style')]
-		var scripts = [...doc.getElementsByTagName('script')]
-
-		// alert(doc.body.querySelector("#root"))
-		// const content = doc.querySelector("#root")
-		// return ([{
-		// 	title: content ? <WrapContent content={content} styles={styles} additionalScripts={scripts}/> : null,
-		// 	body : null
-		// }])
-
-		var CellHeading = [...doc.querySelectorAll(".row.header")];
-		var CellBody = [...doc.querySelectorAll(".section-items")];
-
-		return CellHeading.map((t, idx) => {
-
-			var headding = cleanupCell(t, idx)
-			var body = cleanupCell(CellBody[idx]) //cleanupCell([...CellBody[idx]?.getElementsByClassName("jp-OutputArea")][0], null);
-
-			//Convert to JSX
-			return ({
-				title: headding ? <WrapContent content={headding} additionalScripts={scripts} styles={styles} /> : null,
-				body: body ? <WrapContent content={body} additionalScripts={scripts} styles={styles} /> : null
-			})
-		});
-	});
+export const getPDFTitleBodyPairs = fileName =>
+	Promise.resolve([{
+		title: <iframe src={"./" + "pdf/" + fileName} width={"100%"} height={"100%"}></iframe>
+	}]
+	);
