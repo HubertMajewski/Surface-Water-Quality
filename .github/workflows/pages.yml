@@ -34,7 +34,7 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [12.x]
     
     steps:
       - name: Checkout
@@ -52,11 +52,11 @@ jobs:
         env:
           CI: ""
       - name: Move to Surface-Water-Quality folder
-        run: mv ./NodeJS/build/ ./NodeJS/Surface-Water-Quality/
+        run: mv ./build/ ./Surface-Water-Quality/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with: 
-          path: "./NodeJS/"
+          path: "./NodeJS/Surface-Water-Quality"
 
   # Deployment job
   deploy:
