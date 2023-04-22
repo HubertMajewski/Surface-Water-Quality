@@ -45,14 +45,18 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm run build 
+      - name: Install packages
+        run: npm ci
+      - name: Compile React build
+        run: npm run build 
         env:
           CI: ""
+      - name: Move to Surface-Water-Quality folder
+        run: mv ./NodeJS/build/ ./NodeJS/Surface-Water-Quality/
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v2
         with: 
-          path: "./NodeJS/build"
+          path: "./NodeJS/"
 
   # Deployment job
   deploy:
