@@ -54,7 +54,7 @@ jobs:
       - name: Move to Surface-Water-Quality folder
         run: mv ./NodeJS/build/ ./NodeJS/Surface-Water-Quality/
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v1
         with: 
           path: "./NodeJS/"
 
