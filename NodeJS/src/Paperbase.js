@@ -3,7 +3,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Box from '@mui/material/Box';
 import Navigator from './components/Navigator';
-import Content from './pages/Content';
+import Content from './pages';
 import Header from './components/Header';
 
 let theme = createTheme({

@@ -23,7 +23,7 @@ export default () => {
     )
 
   page = page.find(x =>
-      x[0] === selectedNavigation + "_" + selectedSubnavigation.replaceAll(" ", "_")
+      x[0] === selectedNavigation + "_" + selectedSubnavigation?.replaceAll(" ", "_")
     )?.[1];
 
 
